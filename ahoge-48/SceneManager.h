@@ -15,6 +15,9 @@ public:
 	void draw()const;
 
 private:
+	void proceed();
+	void titleToPlay();
+
 	//シーンインスタンス
 	std::shared_ptr<SceneBase<SceneContext>> currentScene_;
 	std::shared_ptr<SceneContext> context_;

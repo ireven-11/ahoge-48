@@ -21,9 +21,21 @@ SceneManager::~SceneManager()
 void SceneManager::update()
 {
 	currentScene_->update();
+
+	proceed();
 }
 
 void SceneManager::draw()const
 {
 	currentScene_->draw();
+}
+
+void SceneManager::proceed()
+{
+	titleToPlay();
+}
+
+void SceneManager::titleToPlay()
+{
+
 }
