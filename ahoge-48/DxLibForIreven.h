@@ -53,7 +53,7 @@ inline bool PlayTransparentMovie(int movieHandle, int screenHandle, unsigned cha
     {
         PlayMovieToGraph(movieHandle);
     }
-    DrawExtendGraph(moviePosition.x, moviePosition.y, moviePosition.x + movieWidht, moviePosition.y + movieHeight, movieHandle, TRUE);
+    DrawExtendGraphF(moviePosition.x, moviePosition.y, moviePosition.x + movieWidht, moviePosition.y + movieHeight, movieHandle, TRUE);
 
     //元のスクリーンハンドルに戻す
     SetDrawScreen(originScreenHandle);
@@ -68,7 +68,7 @@ inline bool PlayTransparentMovie(int movieHandle, int screenHandle, unsigned cha
     {
         GraphFilter(screenHandle, DX_GRAPH_FILTER_BRIGHT_CLIP, DX_CMP_GREATER, 245, TRUE, GetColor(0, 255, 0), 0);
     }
-    DrawExtendGraph(moviePosition.x, moviePosition.y, moviePosition.x + movieWidht, moviePosition.y + movieHeight, screenHandle, TRUE);
+    DrawExtendGraphF(moviePosition.x, moviePosition.y, moviePosition.x + movieWidht, moviePosition.y + movieHeight, screenHandle, TRUE);
 
     //動画が再生してるかを返す
     if (GetMovieStateToGraph(movieHandle))
@@ -94,7 +94,7 @@ inline T CalculateDistance(VECTOR position1, VECTOR position2 = VGet(0.0f, 0.0f,
     tempVector = VSub(tempVector, position2);
     tempVector = VGet(tempVector.x * tempVector.x, tempVector.y * tempVector.y, tempVector.z * tempVector.z);
     T value = tempVector.x + tempVector.y + tempVector.z;
-    return sqrt(value);
+    return static_cast<T>(sqrt(value));
 }
 
 /// <summary>
@@ -111,8 +111,8 @@ inline void DrawAnimationGraph(VECTOR position, int graphHandle[], int graphWidt
     unsigned int tilSwitchTime, unsigned int finishGraphNumber, unsigned int startGraphNumber = 0)
 {
     //待ちカウントとアニメーションカウントを定義
-    static int waitCount;
-    static int animationCount = startGraphNumber;
+    static unsigned int waitCount;
+    static unsigned int animationCount = startGraphNumber;
 
     //待ちカウントを進める
     ++waitCount;
@@ -138,7 +138,7 @@ inline void DrawAnimationGraph(VECTOR position, int graphHandle[], int graphWidt
             animationCount = startGraphNumber;
         }
     }
-    DrawExtendGraph(position.x, position.y, position.x + graphWidth, position.y + graphHeight, graphHandle[animationCount], TRUE);
+    DrawExtendGraphF(position.x, position.y, position.x + graphWidth, position.y + graphHeight, graphHandle[animationCount], TRUE);
 }
 
 /// <summary>
@@ -154,7 +154,7 @@ inline void DrawBrinkStringToHandle(VECTOR position, const char* text, int color
     //点滅スピードが0だったら点滅しない
     if (brinkSpeed == 0)
     {
-        DrawStringToHandle(position.x, position.y, text, color, fontHandle);
+        DrawStringToHandle(static_cast<int>(position.x), static_cast<int>(position.y), text, color, fontHandle);
     }
     else
     {
@@ -169,7 +169,7 @@ inline void DrawBrinkStringToHandle(VECTOR position, const char* text, int color
         //点滅カウントが一定値以下のときだけ描画する
         if (brinkCount > 100 / brinkSpeed)
         {
-            DrawStringToHandle(position.x, position.y, text, color, fontHandle);
+            DrawStringToHandle(static_cast<int>(position.x), static_cast<int>(position.y), text, color, fontHandle);
         }
     }
 }
@@ -188,7 +188,7 @@ inline void DrawExtendBrinkGraph(VECTOR position, float widht, float height, int
     //点滅スピードが0だったら点滅しない
     if (brinkSpeed == 0)
     {
-        DrawExtendGraph(position.x, position.y, position.x + widht, position.y + height, graphHandle, isTrans);
+        DrawExtendGraphF(position.x, position.y, position.x + widht, position.y + height, graphHandle, isTrans);
     }
     else
     {
@@ -203,7 +203,7 @@ inline void DrawExtendBrinkGraph(VECTOR position, float widht, float height, int
         //点滅カウントが一定値以下のときだけ描画する
         if (brinkCount > 100 / brinkSpeed)
         {
-            DrawExtendGraph(position.x, position.y, position.x + widht, position.y + height, graphHandle, isTrans);
+            DrawExtendGraphF(position.x, position.y, position.x + widht, position.y + height, graphHandle, isTrans);
         }
     }
 }
@@ -256,7 +256,7 @@ inline MATRIX MV1GetFrameRotateMatrix(int MHandle, int FrameIndex, double Xaxis,
     auto result_matrix = MGetIdent();
     const auto frame_pos = MGetTranslateElem(frame_matrix);
 
-    CreateRotationZXYMatrix(&result_matrix, Xaxis, Yaxis, Zaxis);
+    CreateRotationZXYMatrix(&result_matrix, static_cast<float>(Xaxis), static_cast<float>(Yaxis), static_cast<float>(Zaxis));
     SetMatrixFromVector(result_matrix, frame_pos);
 
     return result_matrix;
@@ -408,7 +408,33 @@ inline VECTOR RotationVectorY(VECTOR vector, double rotationAngle)
     assert((-DX_PI_F < rotationAngle && rotationAngle < DX_PI_F) && "回転角度が弧度法（ラジアン）になってないです！これだとベクトルがよくわからんぐらい回転します！");
 
     //回転
-    MATRIX rotationMatrix = MGetRotY(rotationAngle);
+    MATRIX rotationMatrix = MGetRotY(static_cast<float>(rotationAngle));
     vector = VTransform(vector, rotationMatrix);
     return vector;
+}
+
+/// <summary>
+/// 座標を上下移動させる
+/// </summary>
+/// <param name="positionY">移動させるy座標</param>
+/// <param name="amplitude">上下移動の振れ幅</param>
+/// <param name="period">上下移動の間隔</param>
+/// <returns></returns>
+inline float UpDownPositionY(float positionY, const float amplitude = 1.0f, const float period = 1.0f)
+{
+    //上下移動失敗
+    if (period == 0.0f) return -1.0f;
+
+    //角度法で処理する
+    static	float rad = 0.0f;
+    const	float add_rad = 10.0f;
+    rad += add_rad;
+    if (rad > 360.0f)
+    {
+        rad = 0.0f;
+    }
+
+    //sinfで移動
+    positionY += sinf(rad / period) * amplitude;
+    return positionY;
 }

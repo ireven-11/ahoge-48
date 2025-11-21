@@ -1,4 +1,5 @@
 #include"DxLib.h"
+#include"TitleUI.h"
 #include"Title.h"
 
 Title::Title(std::shared_ptr<SceneContext> context) : SceneBase(context)
@@ -21,5 +22,5 @@ void Title::update()
 
 void Title::draw()
 {
-	
+	ui_->draw(context()->getFontSize100(), context()->getFontSize50());
 }

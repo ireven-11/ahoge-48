@@ -2,6 +2,8 @@
 #include"SceneBase.h"
 #include"SceneContext.h"
 
+class TitleUI;
+
 class Title : public SceneBase<SceneContext>
 {
 public:
@@ -13,4 +15,5 @@ public:
 	void draw();
 
 private:
+	std::shared_ptr<TitleUI> ui_ = std::make_shared<TitleUI>();
 };

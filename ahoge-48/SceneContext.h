@@ -12,9 +12,12 @@ public:
 	}
 	~SceneContext()
 	{
-		
+		DeleteFontToHandle(fontSize100_);
 	}
-	
+	int getFontSize100()const noexcept { return fontSize100_; }
+	int getFontSize50()const noexcept { return fontSize50_; }
+
 private:
-	
+	const int fontSize100_ = CreateFontToHandle("HGS‘n‰pŠpƒ|ƒbƒv‘Ì", 100, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4);
+	const int fontSize50_ = CreateFontToHandle("HGS‘n‰pŠpƒ|ƒbƒv‘Ì", 50, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4);
 };
