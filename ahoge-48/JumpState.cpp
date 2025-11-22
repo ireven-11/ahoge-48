@@ -4,10 +4,12 @@
 
 JumpState::JumpState()
 {
+	jumpGraph_ = LoadGraph("graph/catJump.png");
 }
 
 JumpState::~JumpState()
 {
+	DeleteGraph(jumpGraph_);
 }
 
 void JumpState::enter(std::shared_ptr<Player> chara)
@@ -33,11 +35,13 @@ void JumpState::draw(std::shared_ptr<Player> chara)
 {
 	if (chara->getIsFacingRight())
 	{
-
+		DrawExtendGraph(chara->getPosition().x, chara->getPosition().y,
+			chara->getPosition().x + player_widht, chara->getPosition().y + player_height, jumpGraph_, TRUE);
 	}
 	else
 	{
-
+		DrawExtendGraph(chara->getPosition().x, chara->getPosition().y,
+			chara->getPosition().x - player_widht, chara->getPosition().y + player_height, jumpGraph_, TRUE);
 	}
 }
 

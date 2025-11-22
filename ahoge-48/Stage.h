@@ -5,6 +5,7 @@ const		VECTOR	water_position		= VGet(0.0f, 700.0f, 0.0f);
 constexpr	short	max_scaffold_number = 10;
 constexpr	float	scaffold_widht		= 200.0f;
 constexpr	float	scaffold_height		= 75.0f;
+const		VECTOR	big_scaffold_init	= VGet(800.0f, 500.0f, 0.0f);
 
 class Stage
 {
@@ -26,8 +27,7 @@ private:
 	VECTOR	skypos1_;
 	VECTOR	skypos2_;
 	int		scaffoldGraph_;
-	int		scaffoldGraphArray_[max_scaffold_number];
-	VECTOR	bigScaffoldGraph_;
+	VECTOR	bigScaffoldPos_;
 	VECTOR	scaffoldPos_[max_scaffold_number];
 	short	scaffoldCounter_;
 

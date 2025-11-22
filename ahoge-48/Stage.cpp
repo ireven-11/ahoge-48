@@ -10,20 +10,23 @@ Stage::Stage()
 	scaffoldGraph_	= LoadGraph("graph/tileset.png");
 	for (int i = 0; i < max_scaffold_number; i++)
 	{
-		scaffoldPos_[i]			= VGet(static_cast<float>(GetRand(1920) - scaffold_widht / 2), init_scaffold_pos_y * i * 10 , 0.0f);
-		scaffoldGraphArray_[i]	= scaffoldGraph_;
+		if (i == 0)
+		{
+			scaffoldPos_[i] = big_scaffold_init;
+		}
+		else
+		{
+			scaffoldPos_[i] = VGet(static_cast<float>(GetRand(1920) - scaffold_widht / 2),
+				static_cast<float>(GetRand(init_scaffold_pos_y) * 50), 0.0f);
+		}
 	}
-	scaffoldCounter_ = 0;
+	scaffoldCounter_	= 0;
 }
 
 Stage::~Stage()
 {
 	DeleteGraph(waterGraph_);
 	DeleteGraph(skyGraph_);
-	for (int i = 0; i < max_scaffold_number; i++)
-	{
-		DeleteGraph(scaffoldGraphArray_[i]);
-	}
 }
 
 void Stage::init()
@@ -32,7 +35,15 @@ void Stage::init()
 	skypos2_ = VGet(0.0f, -sky_height, 0.0f);
 	for (int i = 0; i < max_scaffold_number; i++)
 	{
-		scaffoldPos_[i] = VGet(static_cast<float>(GetRand(1920) - scaffold_widht / 2), init_scaffold_pos_y * i * 10, 0.0f);
+		if (i == 0)
+		{
+			scaffoldPos_[i] = big_scaffold_init;
+		}
+		else
+		{
+			scaffoldPos_[i] = VGet(static_cast<float>(GetRand(1920) - scaffold_widht / 2),
+				static_cast<float>(GetRand(init_scaffold_pos_y) * 50), 0.0f);
+		}
 	}
 	scaffoldCounter_ = 0;
 }
@@ -50,8 +61,16 @@ void Stage::draw()const
 
 	for (int i = 0; i < max_scaffold_number; i++)
 	{
-		DrawExtendGraph(scaffoldPos_[i].x, scaffoldPos_[i].y, scaffoldPos_[i].x + scaffold_widht, scaffoldPos_[i].y + scaffold_height,
-			scaffoldGraph_, TRUE);
+		if (i == 0)
+		{
+			DrawExtendGraph(scaffoldPos_[i].x, scaffoldPos_[i].y, scaffoldPos_[i].x + scaffold_widht * 2,
+				scaffoldPos_[i].y + scaffold_height, scaffoldGraph_, TRUE);
+		}
+		else
+		{
+			DrawExtendGraph(scaffoldPos_[i].x, scaffoldPos_[i].y, scaffoldPos_[i].x + scaffold_widht, scaffoldPos_[i].y + scaffold_height,
+				scaffoldGraph_, TRUE);
+		}
 	}
 
 	DrawExtendGraph(water_position.x, water_position.y, water_position.x + water_width, water_position.y + water_height,
@@ -79,7 +98,7 @@ void Stage::updateScaffold()
 	{
 		scaffoldPos_[i].y += scaffold_fall_spped;
 
-		if (scaffoldPos_[i].y > 1080) 
+		if (scaffoldPos_[i].y > 900) 
 		{
 			scaffoldPos_[i].y = -init_scaffold_pos_y;
 			scaffoldPos_[i].x = static_cast<float>(GetRand(1920) - scaffold_widht / 2);

@@ -16,4 +16,6 @@ public:
 
 private:
 	void changeState(std::shared_ptr<Player> chara);
+
+	int dashGraph_[5];
 };

@@ -4,6 +4,9 @@
 #include"JumpState.h"
 #include"IdleState.h"
 
+const float player_widht = 100.0f;
+const float player_height = 100.0f;
+
 class Stage;
 
 class Player : public std::enable_shared_from_this<Player>
@@ -27,6 +30,7 @@ public:
 	void startJump();
 	bool getIsRising()const noexcept { return isRising_; }
 	bool getIsDead()const noexcept { return isDead_; }
+	VECTOR getPosition()const noexcept { return position_; }
 
 private:
 	void collisionWithStage(std::shared_ptr<Stage> stage);
@@ -63,10 +67,8 @@ private:
 		return state;
 	}
 
-	const float init_jump_speed		= -40.0f;
-	const float max_velocity_y		= 7.5f;
+	const float init_jump_speed		= -30.0f;
+	const float max_velocity_y		= 5.5f;
 	const float move_speed_x		= 5.0f;
 	const float dash_magnification	= 1.5f;
-	const float player_widht		= 100.0f;
-	const float player_height		= 100.0f;
 };

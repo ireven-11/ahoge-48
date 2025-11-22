@@ -17,4 +17,5 @@ public:
 private:
 	void changeState(std::shared_ptr<Player> chara);
 
+	int idleGraph_[5];
 };

@@ -7,7 +7,7 @@ Player::Player()
 	isFacingRight_	= true;
 	position_		= VGet(1000.0f, 300.0f, 0.0f);
 	velocityY_		= 0.0f;
-	isboot_			= true;
+	isboot_			= false;
 	currentState_	= idleState_();
 	isGround_		= false;
 	catInBootGraph_	= LoadGraph("graph/catInBoot.png");
@@ -27,7 +27,7 @@ void Player::init()
 	position_		= VGet(1000.0f, 300.0f, 0.0f);
 	velocityY_		= 0.0f;
 	currentState_	= idleState_();
-	isboot_			= true;
+	isboot_			= false;
 	isGround_		= false;
 	isRising_		= false;
 	isDead_			= false;
@@ -158,7 +158,21 @@ void Player::collisionWithStage(std::shared_ptr<Stage> stage)
 {
 	for (int i = 0; i < max_scaffold_number; i++)
 	{
-		if (stage->getScaffoldPos()[i].x < position_.x && position_.x < stage->getScaffoldPos()[i].x + scaffold_widht ||
+		if (i == 0)
+		{
+			if (stage->getScaffoldPos()[i].x < position_.x && position_.x < stage->getScaffoldPos()[i].x + scaffold_widht * 2 ||
+				stage->getScaffoldPos()[i].x < position_.x + player_widht && position_.x + player_widht < stage->getScaffoldPos()[i].x + scaffold_widht * 2)
+			{
+				if (stage->getScaffoldPos()[i].y < position_.y + player_height && position_.y + player_height < stage->getScaffoldPos()[i].y + scaffold_height)
+				{
+					position_.y = stage->getScaffoldPos()[i].y - player_height;
+					isGround_ = true;
+
+					return;
+				}
+			}
+		}
+		else if (stage->getScaffoldPos()[i].x < position_.x && position_.x < stage->getScaffoldPos()[i].x + scaffold_widht ||
 			stage->getScaffoldPos()[i].x < position_.x + player_widht && position_.x + player_widht < stage->getScaffoldPos()[i].x + scaffold_widht)
 		{
 			if (stage->getScaffoldPos()[i].y < position_.y + player_height && position_.y + player_height < stage->getScaffoldPos()[i].y + scaffold_height)
