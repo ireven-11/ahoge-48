@@ -25,7 +25,7 @@ void Game::update()
 		scene_->draw();
 
 		fps_->update();
-		fps_->draw();
+		//fps_->draw();
 		fps_->wait();
 
 		//裏画面の内容を表画面に反映(ゲームループの最後に呼ぶ)

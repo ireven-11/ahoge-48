@@ -134,6 +134,7 @@
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Message.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Title.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="IScene.h" />
+    <ClInclude Include="Message.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneContext.h" />

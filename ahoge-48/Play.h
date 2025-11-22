@@ -1,8 +1,8 @@
 #pragma once
-#include"IScene.h"
 #include"SceneBase.h"
 #include"SceneContext.h"
-#include<vector>
+
+class Message;
 
 class Play : public SceneBase<SceneContext>
 {
@@ -15,4 +15,7 @@ public:
 	void draw();
 
 private:
+	
+	//インスタンス
+	std::shared_ptr<Message> message_ = std::make_shared<Message>();
 };

@@ -37,5 +37,8 @@ void SceneManager::proceed()
 
 void SceneManager::titleToPlay()
 {
-
+	if (CheckHitKey(KEY_INPUT_RETURN))
+	{
+		currentScene_ = playScene_;
+	}
 }
