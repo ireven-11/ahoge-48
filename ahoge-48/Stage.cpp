@@ -32,7 +32,7 @@ void Stage::init()
 	skypos2_ = VGet(0.0f, -sky_height, 0.0f);
 	for (int i = 0; i < max_scaffold_number; i++)
 	{
-		scaffoldPos_[i] = VGet(0.0f, 0.0f, 0.0f);
+		scaffoldPos_[i] = VGet(static_cast<float>(GetRand(1920) - scaffold_widht / 2), init_scaffold_pos_y * i * 10, 0.0f);
 	}
 	scaffoldCounter_ = 0;
 }

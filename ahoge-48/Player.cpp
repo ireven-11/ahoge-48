@@ -26,8 +26,8 @@ void Player::init()
 	isFacingRight_	= true;
 	position_		= VGet(1000.0f, 300.0f, 0.0f);
 	velocityY_		= 0.0f;
-	currentState_	= nullptr;
-	isboot_			= false;
+	currentState_	= idleState_();
+	isboot_			= true;
 	isGround_		= false;
 	isRising_		= false;
 	isDead_			= false;
