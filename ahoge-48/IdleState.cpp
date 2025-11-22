@@ -4,6 +4,7 @@
 
 IdleState::IdleState()
 {
+	
 }
 
 IdleState::~IdleState()
@@ -12,7 +13,7 @@ IdleState::~IdleState()
 
 void IdleState::enter(std::shared_ptr<Player> chara)
 {
-
+	
 }
 
 void IdleState::exit(std::shared_ptr<Player> chara)
@@ -22,7 +23,7 @@ void IdleState::exit(std::shared_ptr<Player> chara)
 
 void IdleState::update(std::shared_ptr<Player> chara)
 {
-	changeState(chara);
+  	changeState(chara);
 }
 
 void IdleState::draw(std::shared_ptr<Player> chara)
@@ -43,7 +44,7 @@ void IdleState::changeState(std::shared_ptr<Player> chara)
 	{
 		chara->changeToWalkState();
 	}
-	else if (CheckHitKey(KEY_INPUT_SPACE))
+	if (CheckHitKey(KEY_INPUT_W))
 	{
 		chara->changeToJumpState();
 	}

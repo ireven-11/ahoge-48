@@ -45,7 +45,7 @@ void WalkState::changeState(std::shared_ptr<Player> chara)
 	{
 		chara->changeToDashState();
 	}
-	else if (CheckHitKey(KEY_INPUT_SPACE))
+	else if (CheckHitKey(KEY_INPUT_W))
 	{
 		chara->changeToJumpState();
 	}

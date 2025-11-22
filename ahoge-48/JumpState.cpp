@@ -12,7 +12,7 @@ JumpState::~JumpState()
 
 void JumpState::enter(std::shared_ptr<Player> chara)
 {
-
+	chara->startJump();
 }
 
 void JumpState::exit(std::shared_ptr<Player> chara)
@@ -22,6 +22,10 @@ void JumpState::exit(std::shared_ptr<Player> chara)
 
 void JumpState::update(std::shared_ptr<Player> chara)
 {
+	chara->jump();
+	chara->walk();
+	chara->dash();
+
 	changeState(chara);
 }
 

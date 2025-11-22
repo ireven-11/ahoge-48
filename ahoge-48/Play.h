@@ -4,6 +4,7 @@
 
 class Message;
 class Rain;
+class Player;
 
 class Play : public SceneBase<SceneContext>
 {
@@ -20,4 +21,5 @@ private:
 	//インスタンス
 	std::shared_ptr<Message>	message_	= std::make_shared<Message>();
 	std::shared_ptr<Rain>		rain_		= std::make_shared<Rain>();
+	std::shared_ptr<Player>		player_		= std::make_shared<Player>();
 };

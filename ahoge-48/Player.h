@@ -22,13 +22,15 @@ public:
 	void changeToIdleState();
 	bool getIsFacingRight()const noexcept { return isFacingRight_; }
 	bool getIsGround()const noexcept { return isGround_; }
+	void startJump();
 
 private:
 	bool	isFacingRight_;
 	VECTOR	position_;
-	float	veclocityY_;
+	float	velocityY_;
 	bool	isboot_;
 	bool	isGround_;
+	int		catInBootGraph_;
 	std::shared_ptr<IState<Player>> currentState_;
 
 	//ステート
@@ -53,8 +55,10 @@ private:
 		return state;
 	}
 
-	const float init_jump_speed		= -12.0f;
-	const float max_velocity		= 3.0f;
+	const float init_jump_speed		= -15.0f;
+	const float max_velocity_y		= 4.0f;
 	const float move_speed_x		= 3.0f;
 	const float dash_magnification	= 1.5f;
+	const float player_widht		= 100.0f;
+	const float player_height		= 100.0f;
 };

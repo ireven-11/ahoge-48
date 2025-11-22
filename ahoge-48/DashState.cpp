@@ -41,7 +41,7 @@ void DashState::draw(std::shared_ptr<Player> chara)
 
 void DashState::changeState(std::shared_ptr<Player> chara)
 {
-	if (CheckHitKey(KEY_INPUT_SPACE))
+	if (CheckHitKey(KEY_INPUT_W))
 	{
 		chara->changeToJumpState();
 	}
