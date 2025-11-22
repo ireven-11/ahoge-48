@@ -3,6 +3,7 @@
 #include"SceneContext.h"
 
 class Message;
+class Rain;
 
 class Play : public SceneBase<SceneContext>
 {
@@ -17,5 +18,6 @@ public:
 private:
 	
 	//インスタンス
-	std::shared_ptr<Message> message_ = std::make_shared<Message>();
+	std::shared_ptr<Message>	message_	= std::make_shared<Message>();
+	std::shared_ptr<Rain>		rain_		= std::make_shared<Rain>();
 };

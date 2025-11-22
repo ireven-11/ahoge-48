@@ -136,6 +136,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Rain.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleUI.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Rain.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneContext.h" />
     <ClInclude Include="SceneManager.h" />

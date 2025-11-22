@@ -15,5 +15,5 @@ public:
 	void draw();
 
 private:
-	std::shared_ptr<TitleUI> ui_ = std::make_shared<TitleUI>();
+	std::shared_ptr<TitleUI>	ui_		= std::make_shared<TitleUI>();
 };
