@@ -6,7 +6,10 @@ Player::Player()
 {
 	isFacingRight_	= true;
 	position_		= VGet(1000.0f, 500.0f, 0.0f);
-	veclocity_		= VGet(0.0f, 0.0f, 0.0f);
+	veclocityY_		= 0.0f;
+	isboot_			= false;
+	currentState_	= idleState_();
+	isGround_		= false;
 }
 
 Player::~Player()
@@ -17,8 +20,10 @@ void Player::init()
 {
 	isFacingRight_	= true;
 	position_		= VGet(1000.0f, 500.0f, 0.0f);
-	veclocity_		= VGet(0.0f, 0.0f, 0.0f);
+	veclocityY_		= 0.0f;
 	currentState_	= nullptr;
+	isboot_			= false;
+	isGround_		= false;
 }
 
 void Player::update()
@@ -31,63 +36,47 @@ void Player::update()
 
 void Player::draw()
 {
-	if (isFacingRight_)
-	{
-
-	}
-	else
-	{
-
-	}
+	currentState_->draw(shared_from_this());
 }
 
 void Player::jump()
 {
-	if (CheckHitKey(KEY_INPUT_SPACE))
-	{
-
-	}
+	
 }
 
 void Player::walk()
 {
-	if (CheckHitKey(KEY_INPUT_D))
-	{
-
-	}
-	else if ((CheckHitKey(KEY_INPUT_A)))
-	{
-
-	}
+	
 }
 
 void Player::dash()
 {
-	if (CheckHitKey(KEY_INPUT_D))
-	{
-
-	}
-	else if ((CheckHitKey(KEY_INPUT_A)))
-	{
-
-	}
+	
 }
 
 void Player::changeToWalkState()
 {
+	currentState_->exit(shared_from_this());
 	currentState_ = walkState_();
+	currentState_->enter(shared_from_this());
 }
 
 void Player::changeToDashState()
 {
+	currentState_->exit(shared_from_this());
 	currentState_ = dashState_();
+	currentState_->enter(shared_from_this());
 }
 
 void Player::changeToJumpState()
 {
+	currentState_->exit(shared_from_this());
 	currentState_ = jumpState_();
+	currentState_->enter(shared_from_this());
 }
 void Player::changeToIdleState()
 {
+	currentState_->exit(shared_from_this());
 	currentState_ = idleState_();
+	currentState_->enter(shared_from_this());
 }

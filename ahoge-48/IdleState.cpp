@@ -22,5 +22,29 @@ void IdleState::exit(std::shared_ptr<Player> chara)
 
 void IdleState::update(std::shared_ptr<Player> chara)
 {
+	changeState(chara);
+}
 
+void IdleState::draw(std::shared_ptr<Player> chara)
+{
+	if (chara->getIsFacingRight())
+	{
+
+	}
+	else
+	{
+
+	}
+}
+
+void IdleState::changeState(std::shared_ptr<Player> chara)
+{
+	if (CheckHitKey(KEY_INPUT_D) || CheckHitKey(KEY_INPUT_A))
+	{
+		chara->changeToWalkState();
+	}
+	else if (CheckHitKey(KEY_INPUT_SPACE))
+	{
+		chara->changeToJumpState();
+	}
 }

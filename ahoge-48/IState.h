@@ -9,4 +9,8 @@ public:
 	virtual void enter(std::shared_ptr<Chara> chara)	= 0;
 	virtual void exit(std::shared_ptr<Chara> chara)		= 0;
 	virtual void update(std::shared_ptr<Chara> chara)	= 0;
+	virtual void draw(std::shared_ptr<Chara> chara)		= 0;
+
+private:
+	virtual void changeState(std::shared_ptr<Chara> chara) = 0;
 };
