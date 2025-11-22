@@ -33,5 +33,5 @@ void Play::draw()
 {
 	rain_->draw();
 
-	message_->draw();
+	message_->draw(context()->getFontSize35());
 }
