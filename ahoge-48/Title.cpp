@@ -24,3 +24,8 @@ void Title::draw()
 {
 	ui_->draw(context()->getFontSize100(), context()->getFontSize50());
 }
+
+bool Title::canChangeScene()
+{
+	return true;
+}

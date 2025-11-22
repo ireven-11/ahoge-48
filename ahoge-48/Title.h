@@ -13,6 +13,7 @@ public:
 	void init();
 	void update();
 	void draw();
+	bool canChangeScene();
 
 private:
 	std::shared_ptr<TitleUI>	ui_		= std::make_shared<TitleUI>();

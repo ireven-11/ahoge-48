@@ -12,6 +12,7 @@ Player::Player()
 	isGround_		= false;
 	catInBootGraph_	= LoadGraph("graph/catInBoot.png");
 	isRising_		= false;
+	isDead_			= false;
 }
 
 Player::~Player()
@@ -29,6 +30,7 @@ void Player::init()
 	isboot_			= false;
 	isGround_		= false;
 	isRising_		= false;
+	isDead_			= false;
 }
 
 void Player::update(std::shared_ptr<Stage> stage)
@@ -170,4 +172,9 @@ void Player::collisionWithStage(std::shared_ptr<Stage> stage)
 	}
 
 	isGround_ = false;
+
+	if (water_position.y < position_.y)
+	{
+		isDead_ = true;
+	}
 }

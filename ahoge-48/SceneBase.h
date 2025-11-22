@@ -15,9 +15,10 @@ public:
 	}
 	virtual ~SceneBase() = default;
 
-	virtual void init()		= 0;
-	virtual void update()	= 0;
-	virtual void draw()		= 0;
+	virtual void init()				= 0;
+	virtual void update()			= 0;
+	virtual void draw()				= 0;
+	virtual bool canChangeScene()	= 0;
 
 protected:
 	//コンテキストを継承先で呼び出せるようにしてさらにコンテキストからオブジェクトを呼ぶ

@@ -20,7 +20,10 @@ Play::~Play()
 
 void Play::init()
 {
-	
+	message_->init();
+	rain_->init();
+	player_->init();
+	stage_->init();
 }
 
 void Play::update()
@@ -35,6 +38,8 @@ void Play::update()
 	player_->update(stage_);
 
 	stage_->update();
+
+	context()->getScore()->update();
 }
 
 void Play::draw()
@@ -46,4 +51,9 @@ void Play::draw()
 	message_->draw(context()->getFontSize35());
 
 	player_->draw();
+}
+
+bool Play::canChangeScene()
+{
+	return player_->getIsDead();
 }

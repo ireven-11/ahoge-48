@@ -26,6 +26,7 @@ public:
 	bool getIsGround()const noexcept { return isGround_; }
 	void startJump();
 	bool getIsRising()const noexcept { return isRising_; }
+	bool getIsDead()const noexcept { return isDead_; }
 
 private:
 	void collisionWithStage(std::shared_ptr<Stage> stage);
@@ -37,6 +38,7 @@ private:
 	bool	isGround_;
 	int		catInBootGraph_;
 	bool	isRising_;
+	bool	isDead_;
 	std::shared_ptr<IState<Player>> currentState_;
 
 	//ステート

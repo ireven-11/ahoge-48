@@ -16,7 +16,8 @@ public:
 	void init();
 	void update();
 	void draw();
-
+	bool canChangeScene();
+	
 private:
 	
 	//インスタンス
