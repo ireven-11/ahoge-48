@@ -46,12 +46,26 @@ void Player::jump()
 
 void Player::walk()
 {
-	
+	if (isFacingRight_)
+	{
+		position_.x += move_speed_x;
+	}
+	else
+	{
+		position_.x -= move_speed_x;
+	}
 }
 
 void Player::dash()
 {
-	
+	if (isFacingRight_)
+	{
+		position_.x += move_speed_x * dash_magnification;
+	}
+	else
+	{
+		position_.x -= move_speed_x * dash_magnification;
+	}
 }
 
 void Player::changeToWalkState()

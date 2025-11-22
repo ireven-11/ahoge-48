@@ -22,6 +22,8 @@ void WalkState::exit(std::shared_ptr<Player> chara)
 
 void WalkState::update(std::shared_ptr<Player> chara)
 {
+	chara->walk();
+
 	changeState(chara);
 }
 

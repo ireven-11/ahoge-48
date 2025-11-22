@@ -56,4 +56,5 @@ private:
 	const float init_jump_speed		= -12.0f;
 	const float max_velocity		= 3.0f;
 	const float move_speed_x		= 3.0f;
+	const float dash_magnification	= 1.5f;
 };

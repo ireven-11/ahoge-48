@@ -22,6 +22,8 @@ void DashState::exit(std::shared_ptr<Player> chara)
 
 void DashState::update(std::shared_ptr<Player> chara)
 {
+	chara->dash();
+
 	changeState(chara);
 }
 
