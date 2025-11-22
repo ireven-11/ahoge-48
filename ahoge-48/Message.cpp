@@ -30,22 +30,25 @@ void Message::update()
 	if (counter_ > max_count) isdrawing_ = false;
 }
 
-void Message::draw()const
+void Message::draw(const int fontHandle)const
 {
 	if (!isdrawing_) return;
 
 	switch (counter_)
 	{
 	case 0:
-		DrawString(100, 100, "test0", GetColor(255, 255, 255));
+		DrawStringFToHandle(text_pos.x, text_pos.y, "アナウンサー：緊急速報です！ありえんくらいの大雨により海面が急上昇しています!!",
+			GetColor(50, 50, 255), fontHandle);
 		break;
 
 	case 1:
-		DrawString(100, 100, "test1", GetColor(255, 255, 255));
+		DrawStringFToHandle(text_pos.x, text_pos.y, "アナウンサー：政府が開発した魔法の長靴を履いてできるだけ高いところに避難してください!!",
+			GetColor(50, 50, 255), fontHandle);
 		break;
 
 	case 2:
-		DrawString(100, 100, "test2", GetColor(255, 255, 255));
+		DrawStringFToHandle(text_pos.x, text_pos.y, "アナウンサー：以上緊急速報でした。続報が入り次第お知らせします。",
+			GetColor(50, 50, 255), fontHandle);
 		break;
 	}
 }
