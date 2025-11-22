@@ -10,8 +10,8 @@ Stage::Stage()
 	scaffoldGraph_	= LoadGraph("graph/tileset.png");
 	for (int i = 0; i < max_scaffold_number; i++)
 	{
-		scaffoldPos_[i] = VGet(0.0f, 0.0f, 0.0f);
-		scaffoldGraphArray_[i] = scaffoldGraph_;
+		scaffoldPos_[i]			= VGet(static_cast<float>(GetRand(1920) - scaffold_widht / 2), init_scaffold_pos_y * i * 10 , 0.0f);
+		scaffoldGraphArray_[i]	= scaffoldGraph_;
 	}
 	scaffoldCounter_ = 0;
 }
@@ -78,18 +78,11 @@ void Stage::updateScaffold()
 	for (int i = 0; i < max_scaffold_number; i++)
 	{
 		scaffoldPos_[i].y += scaffold_fall_spped;
-	}
 
-	++scaffoldCounter_;
-	if (scaffoldCounter_ < max_scaffold_Count) return;
-
-	scaffoldCounter_ = 0;
-	for (int i = 0; i < max_scaffold_number; i++)
-	{
-		if (scaffoldPos_[i].y > 1080 || scaffoldPos_[i].y < 0) 
+		if (scaffoldPos_[i].y > 1080) 
 		{
-			scaffoldPos_[i].y = init_scaffold_pos_y;
-			scaffoldPos_[i].x = static_cast<float>(SRand(1920) - scaffold_widht / 2);
+			scaffoldPos_[i].y = -init_scaffold_pos_y;
+			scaffoldPos_[i].x = static_cast<float>(GetRand(1920) - scaffold_widht / 2);
 		}
 	}
 }

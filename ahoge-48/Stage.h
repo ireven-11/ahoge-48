@@ -1,6 +1,6 @@
 #pragma once
 
-constexpr	float	gravity				= 0.6f;
+constexpr	float	gravity				= 1.1f;
 const		VECTOR	water_position		= VGet(0.0f, 700.0f, 0.0f);
 constexpr	short	max_scaffold_number = 10;
 constexpr	float	scaffold_widht		= 200.0f;
@@ -15,6 +15,7 @@ public:
 	void init();
 	void update();
 	void draw()const;
+	const VECTOR* getScaffoldPos()const noexcept { return scaffoldPos_; }
 
 private:
 	void updateSky();
@@ -26,6 +27,7 @@ private:
 	VECTOR	skypos2_;
 	int		scaffoldGraph_;
 	int		scaffoldGraphArray_[max_scaffold_number];
+	VECTOR	bigScaffoldGraph_;
 	VECTOR	scaffoldPos_[max_scaffold_number];
 	short	scaffoldCounter_;
 
@@ -34,7 +36,7 @@ private:
 	const float		sky_widht			= 1920.0f;
 	const float		sky_height			= 1080.0f;
 	const float		scroll_speed		= 1.0f;
-	const float		init_scaffold_pos_y	= -20.0f;
+	const float		init_scaffold_pos_y	= 20.0f;
 	const short		max_scaffold_Count	= 200;
-	const float		scaffold_fall_spped = 5.0f;
+	const float		scaffold_fall_spped = gravity;
 };

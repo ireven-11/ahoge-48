@@ -32,7 +32,7 @@ void Play::update()
 	//メッセージが終わるまでほかの更新はしない
 	if (message_->getIsDrawing()) return;
 
-	player_->update();
+	player_->update(stage_);
 
 	stage_->update();
 }

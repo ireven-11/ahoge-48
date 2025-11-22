@@ -4,6 +4,8 @@
 #include"JumpState.h"
 #include"IdleState.h"
 
+class Stage;
+
 class Player : public std::enable_shared_from_this<Player>
 {
 public:
@@ -11,7 +13,7 @@ public:
 	~Player();
 
 	void init();
-	void update();
+	void update(std::shared_ptr<Stage> stage);
 	void draw();
 	void jump();
 	void walk();
@@ -23,14 +25,18 @@ public:
 	bool getIsFacingRight()const noexcept { return isFacingRight_; }
 	bool getIsGround()const noexcept { return isGround_; }
 	void startJump();
+	bool getIsRising()const noexcept { return isRising_; }
 
 private:
+	void collisionWithStage(std::shared_ptr<Stage> stage);
+
 	bool	isFacingRight_;
 	VECTOR	position_;
 	float	velocityY_;
 	bool	isboot_;
 	bool	isGround_;
 	int		catInBootGraph_;
+	bool	isRising_;
 	std::shared_ptr<IState<Player>> currentState_;
 
 	//ステート
@@ -55,9 +61,9 @@ private:
 		return state;
 	}
 
-	const float init_jump_speed		= -15.0f;
-	const float max_velocity_y		= 4.0f;
-	const float move_speed_x		= 3.0f;
+	const float init_jump_speed		= -40.0f;
+	const float max_velocity_y		= 7.5f;
+	const float move_speed_x		= 5.0f;
 	const float dash_magnification	= 1.5f;
 	const float player_widht		= 100.0f;
 	const float player_height		= 100.0f;
