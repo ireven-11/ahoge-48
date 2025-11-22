@@ -133,28 +133,41 @@
   <ItemGroup>
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="IdleState.cpp" />
+    <ClCompile Include="JumpState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rain.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="DashState.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleUI.cpp" />
+    <ClCompile Include="WalkState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DashState.h" />
     <ClInclude Include="DxLibForIreven.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="IdleState.h" />
     <ClInclude Include="IScene.h" />
+    <ClInclude Include="IState.h" />
+    <ClInclude Include="JumpState.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Rain.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneContext.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Stage.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleUI.h" />
+    <ClInclude Include="WalkState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

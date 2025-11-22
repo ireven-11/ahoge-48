@@ -3,16 +3,15 @@
 
 class Player;
 
-class WalkState : public IState<Player>
+class IdleState : public IState<Player>
 {
 public:
-	WalkState();
-	~WalkState();
+	IdleState();
+	~IdleState();
 
 	void enter(std::shared_ptr<Player> chara);
 	void exit(std::shared_ptr<Player> chara);
 	void update(std::shared_ptr<Player> chara);
 
 private:
-
 };

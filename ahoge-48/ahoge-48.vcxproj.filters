@@ -25,6 +25,18 @@
     <Filter Include="ヘッダー ファイル\ui">
       <UniqueIdentifier>{180a7af2-72e5-49f2-93e3-196ed7b7c437}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\player">
+      <UniqueIdentifier>{860b668d-6ff0-4f4a-972b-67ec434fe03f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\player">
+      <UniqueIdentifier>{3b3e92db-531c-4dbe-bbfd-bcc8034676f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\player\state">
+      <UniqueIdentifier>{b4be3187-e3d9-4d1b-93be-bd9c2ffd3726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\player\state">
+      <UniqueIdentifier>{cf674695-2678-4421-b9c6-4197b6b680ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +65,24 @@
     </ClCompile>
     <ClCompile Include="Rain.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>ソース ファイル\player</Filter>
+    </ClCompile>
+    <ClCompile Include="DashState.cpp">
+      <Filter>ソース ファイル\player\state</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpState.cpp">
+      <Filter>ソース ファイル\player\state</Filter>
+    </ClCompile>
+    <ClCompile Include="WalkState.cpp">
+      <Filter>ソース ファイル\player\state</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>ソース ファイル\player\state</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +124,27 @@
     </ClInclude>
     <ClInclude Include="Rain.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ヘッダー ファイル\player</Filter>
+    </ClInclude>
+    <ClInclude Include="WalkState.h">
+      <Filter>ヘッダー ファイル\player\state</Filter>
+    </ClInclude>
+    <ClInclude Include="DashState.h">
+      <Filter>ヘッダー ファイル\player\state</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpState.h">
+      <Filter>ヘッダー ファイル\player\state</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>ヘッダー ファイル\player\state</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>ヘッダー ファイル\player\state</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
