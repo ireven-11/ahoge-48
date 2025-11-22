@@ -16,5 +16,7 @@ public:
 	bool canChangeScene();
 
 private:
+	int backGround_;
+	int bootWithCat_;
 	std::shared_ptr<TitleUI>	ui_		= std::make_shared<TitleUI>();
 };
