@@ -32,9 +32,11 @@ public:
 	bool getIsRising()const noexcept { return isRising_; }
 	bool getIsDead()const noexcept { return isDead_; }
 	VECTOR getPosition()const noexcept { return position_; }
+	int getBootCounter()const noexcept { return bootCounter_; }
 
 private:
 	void collisionWithStage(std::shared_ptr<Stage> stage);
+	void collisionWithBoot(std::shared_ptr<Boot> boot);
 
 	bool	isFacingRight_;
 	VECTOR	position_;
@@ -44,6 +46,7 @@ private:
 	int		catInBootGraph_;
 	bool	isRising_;
 	bool	isDead_;
+	int		bootCounter_;
 	std::shared_ptr<IState<Player>> currentState_;
 
 	//ステート

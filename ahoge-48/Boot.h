@@ -9,9 +9,10 @@ public:
 	Boot();
 	~Boot();
 
-	void update();
-	void draw();
-	void init();
+	void	update();
+	void	draw();
+	void	init();
+	VECTOR	getPosition()const noexcept { return position_; }
 
 private:
 	int		graphHandle_;

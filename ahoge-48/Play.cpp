@@ -4,6 +4,7 @@
 #include"Player.h"
 #include"Stage.h"
 #include"Boot.h"
+#include"PlayUI.h"
 #include"Play.h"
 
 Play::Play(std::shared_ptr<SceneContext> context) : SceneBase(context)
@@ -18,6 +19,7 @@ Play::~Play()
 	player_		= nullptr;
 	stage_		= nullptr;
 	boot_		= nullptr;
+	playUI_		= nullptr;
 }
 
 void Play::init()
@@ -26,6 +28,8 @@ void Play::init()
 	rain_->init();
 	player_->init();
 	stage_->init();
+	boot_->init();
+	playUI_->init();
 }
 
 void Play::update()
@@ -54,9 +58,11 @@ void Play::draw()
 
 	rain_->draw();
 
-	message_->draw(context()->getFontSize35());
-
 	player_->draw();
+
+	playUI_->draw(context()->getFontSize35(), player_->getBootCounter());
+
+	message_->draw(context()->getFontSize35());
 }
 
 bool Play::canChangeScene()

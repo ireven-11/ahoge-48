@@ -7,6 +7,7 @@ class Rain;
 class Player;
 class Stage;
 class Boot;
+class PlayUI;
 
 class Play : public SceneBase<SceneContext>
 {
@@ -27,4 +28,5 @@ private:
 	std::shared_ptr<Player>		player_		= std::make_shared<Player>();
 	std::shared_ptr<Stage>		stage_		= std::make_shared<Stage>();
 	std::shared_ptr<Boot>		boot_		= std::make_shared<Boot>();
+	std::shared_ptr<PlayUI>		playUI_		= std::make_shared<PlayUI>();
 };

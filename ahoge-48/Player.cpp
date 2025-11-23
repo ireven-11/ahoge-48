@@ -1,4 +1,4 @@
-#include"DxLib.h"
+#include"DxLibForIreven.h"
 #include"Stage.h"
 #include"Boot.h"
 #include"Player.h"
@@ -14,6 +14,7 @@ Player::Player()
 	catInBootGraph_	= LoadGraph("graph/catInBoot.png");
 	isRising_		= false;
 	isDead_			= false;
+	bootCounter_	= 0;
 }
 
 Player::~Player()
@@ -32,6 +33,7 @@ void Player::init()
 	isGround_		= false;
 	isRising_		= false;
 	isDead_			= false;
+	bootCounter_	= 0;
 }
 
 void Player::update(std::shared_ptr<Stage> stage, std::shared_ptr<Boot> boot)
@@ -55,7 +57,19 @@ void Player::update(std::shared_ptr<Stage> stage, std::shared_ptr<Boot> boot)
 		position_.x = 1920.0f - player_widht;
 	}
 
+	if (isboot_)
+	{
+		--bootCounter_;
+
+		if (bootCounter_ <= 0)
+		{
+			isboot_ = false;
+		}
+	}
+
+	//“–‚½‚è”»’è
 	collisionWithStage(stage);
+	collisionWithBoot(boot);
 }
 
 void Player::draw()
@@ -144,6 +158,8 @@ void Player::changeToDashState()
 
 void Player::changeToJumpState()
 {
+	if (!isGround_)return;
+
 	currentState_->exit(shared_from_this());
 	currentState_ = jumpState_();
 	currentState_->enter(shared_from_this());
@@ -188,8 +204,33 @@ void Player::collisionWithStage(std::shared_ptr<Stage> stage)
 
 	isGround_ = false;
 
-	if (water_position.y < position_.y)
+	if (isboot_)
+	{
+		if (water_position.y < position_.y)
+		{
+			position_.y = water_position.y;
+			isGround_ = true;
+		}
+
+		return;
+	}
+
+	if (water_position.y + 100 < position_.y)
 	{
 		isDead_ = true;
+	}
+}
+
+void Player::collisionWithBoot(std::shared_ptr<Boot> boot)
+{
+	VECTOR playerCenter = VGet(position_.x + player_widht / 2, position_.y + player_height / 2, 0.0f);
+	VECTOR bootCenter	= VGet(boot->getPosition().x + boot_widht / 2, boot->getPosition().y + boot_height / 2, 0.0f);
+	float distance		= CalculateDistance<float>(playerCenter, bootCenter);
+
+	if (distance < (player_widht + boot_widht) * 0.5f)
+	{
+		isboot_ = true;
+		boot->init();
+		bootCounter_ = 500;
 	}
 }

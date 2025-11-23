@@ -34,6 +34,8 @@ void Message::draw(const int fontHandle)const
 {
 	if (!isdrawing_) return;
 
+	DrawBox(150, 850, 1800, 1000, GetColor(255, 255, 255), TRUE);
+
 	switch (counter_)
 	{
 	case 0:
