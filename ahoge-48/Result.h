@@ -14,4 +14,5 @@ public:
 	bool canChangeScene();
 
 private:
+	int sleep_;
 };

@@ -239,7 +239,7 @@ void Player::collisionWithBoot(std::shared_ptr<Boot> boot)
 	if (distance < (player_widht + boot_widht) * 0.5f)
 	{
 		isboot_ = true;
-		boot->init();
+		boot->initPos();
 		bootCounter_ += 175.0f;
 		PlaySoundMem(getSound_, DX_PLAYTYPE_BACK);
 	}

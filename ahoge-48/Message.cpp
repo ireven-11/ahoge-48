@@ -36,6 +36,8 @@ void Message::draw(const int fontHandle)const
 
 	DrawBox(150, 850, 1800, 1000, GetColor(255, 255, 255), TRUE);
 
+	DrawString(1600, 950, "space‚ð‚¨‚µ‚Ä‚Ë", GetColor(0, 0, 0));
+
 	switch (counter_)
 	{
 	case 0:

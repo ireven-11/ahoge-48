@@ -11,12 +11,14 @@ public:
 
 	void	update();
 	void	draw();
+	void	initPos();
 	void	init();
 	VECTOR	getPosition()const noexcept { return position_; }
 
 private:
 	int		graphHandle_;
 	VECTOR	position_;
+	int		timer_;
 
 	const float init_pos_y = -100;
 };
