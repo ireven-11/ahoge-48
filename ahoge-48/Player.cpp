@@ -1,5 +1,6 @@
 #include"DxLib.h"
 #include"Stage.h"
+#include"Boot.h"
 #include"Player.h"
 
 Player::Player()
@@ -33,7 +34,7 @@ void Player::init()
 	isDead_			= false;
 }
 
-void Player::update(std::shared_ptr<Stage> stage)
+void Player::update(std::shared_ptr<Stage> stage, std::shared_ptr<Boot> boot)
 {
 	if (CheckHitKey(KEY_INPUT_D))		isFacingRight_	= true;
 	else if(CheckHitKey(KEY_INPUT_A))	isFacingRight_	= false;

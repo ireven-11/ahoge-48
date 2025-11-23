@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boot.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="IdleState.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="WalkState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boot.h" />
     <ClInclude Include="DashState.h" />
     <ClInclude Include="DxLibForIreven.h" />
     <ClInclude Include="FPS.h" />

@@ -8,6 +8,7 @@ const float player_widht = 100.0f;
 const float player_height = 100.0f;
 
 class Stage;
+class Boot;
 
 class Player : public std::enable_shared_from_this<Player>
 {
@@ -16,7 +17,7 @@ public:
 	~Player();
 
 	void init();
-	void update(std::shared_ptr<Stage> stage);
+	void update(std::shared_ptr<Stage> stage, std::shared_ptr<Boot> boot);
 	void draw();
 	void jump();
 	void walk();

@@ -1,7 +1,7 @@
 #pragma once
 
 constexpr	float	gravity				= 1.1f;
-const		VECTOR	water_position		= VGet(0.0f, 700.0f, 0.0f);
+const		VECTOR	water_position		= VGet(0.0f, 800.0f, 0.0f);
 constexpr	short	max_scaffold_number = 10;
 constexpr	float	scaffold_widht		= 200.0f;
 constexpr	float	scaffold_height		= 75.0f;
