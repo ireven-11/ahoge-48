@@ -15,12 +15,16 @@ Player::Player()
 	isRising_		= false;
 	isDead_			= false;
 	bootCounter_	= 0;
+	jumpSound_		= LoadSoundMem("sound/jump.mp3");
+	getSound_		= LoadSoundMem("sound/get.mp3");
 }
 
 Player::~Player()
 {
 	currentState_ = nullptr;
 	DeleteGraph(catInBootGraph_);
+	DeleteSoundMem(jumpSound_);
+	DeleteSoundMem(getSound_);
 }
 
 void Player::init()
@@ -59,7 +63,7 @@ void Player::update(std::shared_ptr<Stage> stage, std::shared_ptr<Boot> boot)
 
 	if (isboot_)
 	{
-		--bootCounter_;
+		bootCounter_ -= 0.5f;
 
 		if (bootCounter_ <= 0)
 		{
@@ -95,6 +99,7 @@ void Player::draw()
 void Player::startJump()
 {
 	velocityY_ = init_jump_speed;
+	PlaySoundMem(jumpSound_, DX_PLAYTYPE_BACK);
 }
 
 void Player::jump()
@@ -209,9 +214,7 @@ void Player::collisionWithStage(std::shared_ptr<Stage> stage)
 	{
 		if (water_position.y < position_.y)
 		{
-			--bootCounter_;
-			--bootCounter_;
-			--bootCounter_;
+			bootCounter_ -= 15.0f;
 			position_.y = water_position.y;
 			isGround_ = true;
 		}
@@ -222,6 +225,8 @@ void Player::collisionWithStage(std::shared_ptr<Stage> stage)
 	if (water_position.y + 100 < position_.y)
 	{
 		isDead_ = true;
+
+		WaitTimer(500);
 	}
 }
 
@@ -235,6 +240,7 @@ void Player::collisionWithBoot(std::shared_ptr<Boot> boot)
 	{
 		isboot_ = true;
 		boot->init();
-		bootCounter_ += 200;
+		bootCounter_ += 175.0f;
+		PlaySoundMem(getSound_, DX_PLAYTYPE_BACK);
 	}
 }

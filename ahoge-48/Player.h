@@ -46,7 +46,9 @@ private:
 	int		catInBootGraph_;
 	bool	isRising_;
 	bool	isDead_;
-	int		bootCounter_;
+	float	bootCounter_;
+	int		jumpSound_;
+	int		getSound_;
 	std::shared_ptr<IState<Player>> currentState_;
 
 	//ステート

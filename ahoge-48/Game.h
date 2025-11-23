@@ -20,6 +20,8 @@ private:
 	friend class Singleton<Game>;
 	Game();
 
+	int rain_;
+
 	//インスタンス
 	std::unique_ptr<FPS> fps_				= std::make_unique<FPS>();
 	std::unique_ptr<SceneManager> scene_	= std::make_unique<SceneManager>();
