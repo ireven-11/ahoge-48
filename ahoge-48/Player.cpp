@@ -64,6 +64,7 @@ void Player::update(std::shared_ptr<Stage> stage, std::shared_ptr<Boot> boot)
 		if (bootCounter_ <= 0)
 		{
 			isboot_ = false;
+			bootCounter_ = 0;
 		}
 	}
 
@@ -208,6 +209,9 @@ void Player::collisionWithStage(std::shared_ptr<Stage> stage)
 	{
 		if (water_position.y < position_.y)
 		{
+			--bootCounter_;
+			--bootCounter_;
+			--bootCounter_;
 			position_.y = water_position.y;
 			isGround_ = true;
 		}
@@ -231,6 +235,6 @@ void Player::collisionWithBoot(std::shared_ptr<Boot> boot)
 	{
 		isboot_ = true;
 		boot->init();
-		bootCounter_ = 500;
+		bootCounter_ += 200;
 	}
 }

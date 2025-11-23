@@ -17,7 +17,7 @@ void Boot::update()
 {
 	if (position_.y < 1000.0f)
 	{
-		position_.y += gravity * 2.0f;
+		position_.y += gravity * 4.0f;
 	}
 	else
 	{
